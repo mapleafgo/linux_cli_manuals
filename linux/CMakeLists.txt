@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
 set(BINARY_NAME "linux_cli_manuals")
-set(APPLICATION_ID "com.example.linux_cli_manuals")
+set(APPLICATION_ID "cn.mapleafgo.linux_cli_manuals")
 
 cmake_policy(SET CMP0063 NEW)
 

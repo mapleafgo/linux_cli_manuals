@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -19,11 +17,13 @@ class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _SearchAppBarState extends State<SearchAppBar> {
-  var textController = TextEditingController();
+  final _textController = TextEditingController();
+  final _focusNode = FocusNode();
 
   @override
   void dispose() {
-    textController.dispose();
+    _focusNode.dispose();
+    _textController.dispose();
     super.dispose();
   }
 
@@ -36,23 +36,26 @@ class _SearchAppBarState extends State<SearchAppBar> {
           AppBar(backgroundColor: Colors.white),
           Container(
             padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
-            child: TextField(
-              controller: textController,
-              onChanged: widget.onChanged,
-              onSubmitted: widget.onSubmitted,
-              autofocus: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: IconButton(
-                  tooltip: "清空",
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    textController.clear();
-                    widget.onSubmitted!("");
-                  },
+            child: SafeArea(
+              bottom: false,
+              child: TextField(
+                focusNode: _focusNode,
+                controller: _textController,
+                onChanged: widget.onChanged,
+                onSubmitted: widget.onSubmitted,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: IconButton(
+                    tooltip: "清空",
+                    icon: const Icon(Icons.clear),
+                    onPressed: () {
+                      _textController.clear();
+                      widget.onSubmitted!("");
+                    },
+                  ),
+                  border: InputBorder.none,
+                  hintText: "搜索关键字",
                 ),
-                border: InputBorder.none,
-                hintText: "搜索关键字",
               ),
             ),
           ),

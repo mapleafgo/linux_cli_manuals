@@ -1,4 +1,4 @@
-package com.example.linux_cli_manuals
+package cn.mapleafgo.linux_cli_manuals
 
 import io.flutter.embedding.android.FlutterActivity
 

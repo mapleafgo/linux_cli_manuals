@@ -104,30 +104,6 @@ class HomeController extends Disposable {
     ];
   }
 
-  // _filter(bool Function(Map<String, String>  e) check,
-  //     Function(String key, Map<String, String>  e) put,
-  //     ) {
-  //   for (var element in _source) {
-  //     var key = element['n']!;
-  //     var desc = element['d']!;
-  //     if (check(element)) {
-  //       put(
-  //         key,e
-  //             () {
-  //           var list = desc.split(keyword);
-  //           return ListItem(
-  //             [TextSpanValue(key, false)],
-  //             list
-  //                 .map((e) =>
-  //                 TextSpanValue(e.isNotEmpty ? e : keyword, e.isEmpty))
-  //                 .toList(),
-  //             element['p']!,
-  //           );
-  //         },
-  //       );
-  //     }
-  //   }
-
   detail(path) {
     Modular.to.pushNamed("/detail$path");
   }
