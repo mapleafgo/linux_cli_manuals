@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(linux_cli_manuals LANGUAGES CXX)
 
-set(BINARY_NAME "linux_cli_manuals")
+set(BINARY_NAME "LinuxCliManuals")
 
 cmake_policy(SET CMP0063 NEW)
 
