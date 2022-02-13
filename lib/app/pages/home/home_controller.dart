@@ -1,12 +1,16 @@
 import 'dart:convert';
 
+import 'package:azlistview/azlistview.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:linux_cli_manuals/app/pages/home/model/cli_list_model.dart';
 import 'package:linux_cli_manuals/app/pages/home/model/list_item.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 /// 首页控制器
 class HomeController extends Disposable {
+  final ItemScrollController scrollController = ItemScrollController();
+
   final CliListModel _list = CliListModel();
   final List<Map<String, String>> _source = [];
 
@@ -17,7 +21,7 @@ class HomeController extends Disposable {
 
   /// 读取列表过滤
   Future init() {
-    var indexes = rootBundle.loadString("assets/dist/data.json");
+    var indexes = rootBundle.loadString("assets/dist/data.min.json");
     return indexes.then((value) => json.decode(value)).then((value) {
       if (value is Map<String, dynamic>) {
         for (var element in value.values) {
@@ -42,6 +46,7 @@ class HomeController extends Disposable {
       return;
     }
 
+    scrollController.jumpTo(index: 0);
     Map<String, ListItem> tmpMap = {};
 
     for (var element in _source) {
@@ -94,6 +99,10 @@ class HomeController extends Disposable {
     _list.reset(tmpMap.values.toList());
   }
 
+  detail(path) {
+    Modular.to.pushNamed("/detail$path");
+  }
+
   /// 将匹配关键字染色
   _splitSpan(String s, String k) {
     var index = s.indexOf(k);
@@ -104,7 +113,5 @@ class HomeController extends Disposable {
     ];
   }
 
-  detail(path) {
-    Modular.to.pushNamed("/detail$path");
-  }
+  _fillTag(List<ListItem> list) {}
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -40,6 +42,8 @@ class _SearchAppBarState extends State<SearchAppBar> {
               bottom: false,
               child: TextField(
                 focusNode: _focusNode,
+                autofocus:
+                    Platform.isLinux || Platform.isMacOS || Platform.isWindows,
                 controller: _textController,
                 onChanged: widget.onChanged,
                 onSubmitted: widget.onSubmitted,

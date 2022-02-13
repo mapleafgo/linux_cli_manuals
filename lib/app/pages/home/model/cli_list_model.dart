@@ -1,3 +1,4 @@
+import 'package:azlistview/azlistview.dart';
 import 'package:linux_cli_manuals/app/pages/home/model/list_item.dart';
 import 'package:mobx/mobx.dart';
 
@@ -12,6 +13,7 @@ abstract class _CliListModel with Store {
   @action
   void reset(List<ListItem> array) {
     value.clear();
+    SuspensionUtil.setShowSuspensionStatus(array);
     value.addAll(array);
   }
 }

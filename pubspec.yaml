@@ -1,5 +1,5 @@
 name: linux_cli_manuals
-description: flutter编写的 linux 命令手册 可运行在windows、Linux、macos、android、ios
+description: flutter 编写的 linux 命令手册 可运行在 windows、Linux、macos、android、ios
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -39,6 +39,8 @@ dependencies:
   flutter_markdown: ^0.6.9
   window_manager: ^0.1.5
   url_launcher: ^6.0.20
+  azlistview: ^2.0.0
+  scrollable_positioned_list: ^0.2.3
 
 dev_dependencies:
   flutter_test:
