@@ -19,7 +19,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   void initState() {
     super.initState();
-    controller.init().then((_) => controller.filter(""));
+    controller.init().then((_) => controller.filter("")).then((value) =>
+        FocusScope.of(context).requestFocus(controller.searchFocusNode));
   }
 
   @override
@@ -63,6 +64,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SearchAppBar(
+        focusNode: controller.searchFocusNode,
         onChanged: controller.filter,
         onSubmitted: controller.filter,
       ),

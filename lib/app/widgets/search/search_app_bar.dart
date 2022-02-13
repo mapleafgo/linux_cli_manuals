@@ -1,14 +1,17 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final double? toolbarHeight;
+  final FocusNode? focusNode;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
+  final double? toolbarHeight;
 
   const SearchAppBar(
-      {Key? key, this.toolbarHeight, this.onChanged, this.onSubmitted})
+      {Key? key,
+      this.toolbarHeight,
+      this.onChanged,
+      this.onSubmitted,
+      this.focusNode})
       : super(key: key);
 
   @override
@@ -20,11 +23,9 @@ class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class _SearchAppBarState extends State<SearchAppBar> {
   final _textController = TextEditingController();
-  final _focusNode = FocusNode();
 
   @override
   void dispose() {
-    _focusNode.dispose();
     _textController.dispose();
     super.dispose();
   }
@@ -41,9 +42,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
             child: SafeArea(
               bottom: false,
               child: TextField(
-                focusNode: _focusNode,
-                autofocus:
-                    Platform.isLinux || Platform.isMacOS || Platform.isWindows,
+                focusNode: widget.focusNode,
                 controller: _textController,
                 onChanged: widget.onChanged,
                 onSubmitted: widget.onSubmitted,
