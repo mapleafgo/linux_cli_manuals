@@ -24,7 +24,7 @@ class HomeController extends Disposable {
 
   /// 读取列表过滤
   Future init() {
-    var indexes = rootBundle.loadString("assets/dist/data.min.json");
+    var indexes = rootBundle.loadString("assets/dist/data.json");
     return indexes.then((value) => json.decode(value)).then((value) {
       if (value is Map<String, dynamic>) {
         for (var element in value.values) {
