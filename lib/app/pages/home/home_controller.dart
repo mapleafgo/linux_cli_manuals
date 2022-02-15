@@ -117,6 +117,4 @@ class HomeController extends Disposable {
       TextSpanValue(s.substring(index + k.length), false),
     ];
   }
-
-  _fillTag(List<ListItem> list) {}
 }

@@ -38,7 +38,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
         children: [
           AppBar(backgroundColor: Colors.white),
           Container(
-            padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+            margin: const EdgeInsets.only(left: 10, right: 10, top: 5),
             child: SafeArea(
               bottom: false,
               child: TextField(
